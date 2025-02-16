@@ -13,7 +13,7 @@ int stepperDirection = 0;  // 0 = Stop, 1 = CW, -1 = CCW
 void setup() {
     Serial.begin(9600);
     myServo.attach(servoPin);
-    myServo.write(servoAngle);  // Set initial position
+    //myServo.write(servoAngle);  // Set initial position
     stepperMotor.setSpeed(40);  // Adjust stepper speed (RPM)
     Serial.println("Waiting for input...");
 }
@@ -27,14 +27,14 @@ void loop() {
 
         // Servo Control (+45° / -45° with X and O Buttons)
         if (command == 'X' && servoAngle < 180) {
-            servoAngle += 90;  // Increase by 45°
+            servoAngle += 50;  // Increase by 45°
             Serial.print("Rotating Servo to: ");
             Serial.println(servoAngle);
             myServo.write(servoAngle);
             delay(500);
         }
         else if (command == 'O' && servoAngle > 0) {
-            servoAngle -= 90;  // Decrease by 45°
+            servoAngle -= 65;  // Decrease by 45°
             Serial.print("Rotating Servo to: ");
             Serial.println(servoAngle);
             myServo.write(servoAngle);
